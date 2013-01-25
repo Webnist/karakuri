@@ -47,10 +47,10 @@ class WPGitHubThemeUpdater {
 		$defaults = array(
 			'slug' => $this->theme_basename(__FILE__),
 			'proper_folder_name' => dirname( plugin_basename(__FILE__) ),
-			'api_url' => 'https://api.github.com/repos/ninnypants/WordPress-GitHub-Theme-Updater',
-			'raw_url' => 'https://raw.github.com/ninnypants/WordPress-GitHub-Theme-Updater/master',
-			'github_url' => 'https://github.com/ninnypants/WordPress-GitHub-Theme-Updater',
-			'zip_url' => 'https://github.com/ninnypants/WordPress-GitHub-Theme-Updater/zipball/master',
+			'api_url' => 'https://api.github.com/repos/Webnist/karakuri',
+			'raw_url' => 'https://raw.github.com/Webnist/karakuri/master',
+			'github_url' => 'https://raw.github.com/Webnist/karakuri',
+			'zip_url' => 'https://raw.github.com/Webnist/karakuri/zipball/master',
 			'sslverify' => true,
 			'requires' => $wp_version,
 			'tested' => $wp_version
