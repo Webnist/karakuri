@@ -13,12 +13,6 @@ if ( !function_exists( 'karakuri_theme_setup' ) ) :
 
 		load_theme_textdomain( 'karakuri', get_template_directory() . '/languages' );
 
-		// Themes Update Checker
-		require( get_template_directory() . '/inc/themes-updater.php' );
-
-		// Themes options
-		require( get_template_directory() . '/inc/theme-options.php' );
-
 		// This theme styles the visual editor with editor-style.css to match the theme style.
 		add_editor_style();
 
@@ -519,4 +513,36 @@ if ( !function_exists( 'is_mobile_phone' ) ) {
 		}
 		return $result;
 	}
+}
+
+/**
+ * github_theme_updater_test_init
+ * https://github.com/ninnypants/WordPress-GitHub-Theme-Updater
+ * @since Karakuri 1.0
+ */
+add_action('init', 'github_theme_updater_test_init');
+function github_theme_updater_test_init() {
+
+	include_once( get_template_directory() . '/inc/updater.php' );
+
+	define('WP_GITHUB_FORCE_UPDATE', true);
+
+	if (is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
+
+		$config = array(
+			'proper_folder_name' => 'github-updater',
+			'api_url' => 'https://api.github.com/repos/ninnypants/WordPress-GitHub-Theme-Updater',
+			'raw_url' => 'https://raw.github.com/ninnypants/WordPress-GitHub-Theme-Updater/master/style.css',
+			'github_url' => 'https://github.com/ninnypants/WordPress-GitHub-Theme-Updater',
+			'zip_url' => 'https://github.com/ninnypants/WordPress-GitHub-Theme-Updater/zipball/master',
+			'sslverify' => true,
+			'requires' => '3.0',
+			'tested' => '3.3',
+			'readme' => 'readme.txt'
+		);
+
+		new WPGitHubThemeUpdater($config);
+
+	}
+
 }
