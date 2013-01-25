@@ -27,7 +27,7 @@ if ( !function_exists( 'karakuri_theme_setup' ) ) :
 
 		// Add custom menus.
 		register_nav_menus( array(
-			'main_menu' => __( 'Main Menu', 'karakuri' ),
+			'main_menu'   => __( 'Main Menu', 'karakuri' ),
 			'footer_menu' => __( 'Footer Menu', 'karakuri' ),
 		) );
 
@@ -39,13 +39,12 @@ if ( !function_exists( 'karakuri_theme_setup' ) ) :
 		// Add support for custom headers.
 		$defaults = array(
 			'default-image' => get_template_directory_uri() . '/images/headers/nape-beauty.jpg',
-			'width' => apply_filters( 'karakuri_header_image_width', 980 ),
-			'height' => apply_filters( 'karakuri_header_image_height', 300 ),
-			'header-text' => true,
+			'width'         => apply_filters( 'karakuri_header_image_width', 980 ),
+			'height'        => apply_filters( 'karakuri_header_image_height', 300 ),
+			'header-text'   => true,
 		);
 		add_theme_support( 'custom-header', $defaults );
 
-		
 		// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 		register_default_headers( array(
 			'nape-beauty' => array(
@@ -94,6 +93,12 @@ if ( !function_exists( 'karakuri_theme_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'archive-thumb', 184, 99999 );
 		//set_post_thumbnail_size( 150, 9999 );
+
+		add_theme_support( 'infinite-scroll', array(
+			'container'  => 'content',
+			'footer'     => 'page',
+		) );
+		remove_action( 'get_footer', 'footer' );
 
 	}
 
@@ -145,6 +150,7 @@ endif;
  */
 add_filter( 'wp_title', 'karakuri_wp_title', 10, 2 );
 function karakuri_wp_title( $title, $sep ) {
+	global $paged, $page;
 
 	if ( is_feed() )
 		return $title;
@@ -165,26 +171,43 @@ function karakuri_wp_title( $title, $sep ) {
 }
 
 /**
- * head_mobile_meta
+ * karakuri_head_mobile_meta
  * @Action to wp_head
  */
-add_action( 'wp_head', 'head_mobile_meta' );
-function head_mobile_meta() {
-echo <<< KARAKURI
+add_action( 'wp_head', 'karakuri_head_mobile_meta' );
+function karakuri_head_mobile_meta() {
+echo <<< EOT
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
-KARAKURI;
+EOT;
+}
+
+/**
+ * karakuri_head_script
+ * @Action to wp_head
+ */
+add_action( 'wp_head', 'karakuri_head_script' );
+function karakuri_head_script() {
+$template_directory_uri = get_template_directory_uri();
+echo <<< EOT
+<!--[if lt IE 9]>
+	<script src="{$template_directory_uri}/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+EOT;
 }
 
 /**
  * Enqueues scripts and styles for front-end.
- *
  * @Referring to Twenty Twelve 1.0
  */
 add_action( 'wp_enqueue_scripts', 'karakuri_scripts_styles' );
 function karakuri_scripts_styles() {
+	global $wp_styles;
+
+	wp_enqueue_script( 'jquery-common', get_template_directory_uri() . '/js/common.js', array( 'jquery' ), get_file_time( 'js/common.js' ), true );
+
 	/*
 	 * Adds JavaScript to pages with the comment form to support
 	 * sites with threaded comments (when in use).
@@ -195,8 +218,8 @@ function karakuri_scripts_styles() {
 	/*
 	 * Loads our main stylesheet.
 	 */
-	//wp_enqueue_style( 'karakuri-style.min', get_template_directory_uri() . '/style.min.css' , array(), get_file_time( 'style.min.css' ) );
 	wp_enqueue_style( 'karakuri-style', get_template_directory_uri() . '/style.css' , array(), get_file_time( 'style.css' ) );
+
 }
 
 /* Header
@@ -228,6 +251,96 @@ function get_karakuri_main_img() {
 
 /* Common
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+add_action( 'entry_footer', 'entry_thumbnail' );
+function entry_thumbnail() {
+	$id     = get_the_ID();
+	$size   = 'archive-thumb';
+	$width  = 184;
+	$height = 104;
+	$output = '<div class="thumb">' . "\n";
+	$output .= '<a href="' . get_permalink( $id ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'karakuri' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . "\n";
+	if ( has_post_thumbnail( $id ) ) {
+		$output .= get_the_post_thumbnail( $id, 'archive-thumb' ) . "\n";
+	} else {
+		$output .= '<img src="' . get_template_directory_uri() . '/images/other/no-image.png" alt="' . the_title_attribute( 'echo=0' ) . '" width="' . $width . '" height="' . $height . '">' . "\n";
+	}
+	$output .= '</a>' . "\n";
+	if ( is_sticky() && is_home() && ! is_paged() ) {
+		$output .= '<p class="featured-post"><span>' . __( 'Featured post', 'karakuri' ) . '</span></p>' . "\n";
+	}
+	$output .= '</div>' . "\n";
+	echo apply_filters( 'entry_thumbnail', $output, $size, $width, $height );
+}
+
+add_action( 'entry_footer', 'entry_data' );
+function entry_data() {
+	$output = '<p class="entry-date"><time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">' . esc_html( get_the_date() ) . '</time></p>';
+	echo apply_filters( 'entry_date', $output );
+}
+
+add_action( 'entry_footer', 'entry_categories' );
+function entry_categories() {
+	$categories = get_the_category();
+	$separator  = ', ';
+	$output     = '';
+	$cat        = '';
+	if ( $categories ) {
+		$output .= '<p class="posted-in-category">' . "\n";
+		foreach ( $categories as $category ) {
+			$cat .= '<a href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'karakuri' ), $category->name ) ) . '" rel="category">' . $category->cat_name . '</a>' . $separator;
+		}
+		$output .= trim( $cat, $separator );
+		$output .= '</p>' . "\n";
+		echo apply_filters( 'entry_categories', $output, $separator );
+	}
+}
+
+add_action( 'entry_footer', 'entry_tags' );
+function entry_tags() {
+	$id         = get_the_ID();
+	$posttags   = get_the_tags( $id );
+	$separator  = ', ';
+	$output     = '';
+	$tags       = '';
+	if ( $posttags ) {
+		$output .= '<p class="posted-in-tags">' . "\n";
+		foreach ( $posttags as $tag ) {
+			$tags .= '<a href="' . get_tag_link( $tag->term_id ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'karakuri' ), $tag->name ) ) . '" rel="tag">' . $tag->name . '</a>' . $separator;
+		}
+		$output .= trim( $tags, $separator );
+		$output .= '</p>' . "\n";
+		echo apply_filters( 'entry_tags', $output, $separator );
+	}
+}
+
+add_action( 'entry_footer', 'entry_author' );
+function entry_author() {
+	$output = '<p class="entry-author">' . "\n";
+	$output .= '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . "\n";
+	$output .= get_the_author() . "\n";
+	$output .= '</a></p>' . "\n";
+	echo apply_filters( 'entry_author', $output );
+}
+
+add_action( 'entry_footer', 'entry_comments' );
+function entry_comments() {
+	if ( comments_open() ) {
+		echo '<p class="comments-link">' . "\n";
+		echo comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'karakuri' ) . '</span>', __( '1 Reply', 'karakuri' ), __( '% Replies', 'karakuri' ) ) . "\n";
+		echo '</p>' . "\n";
+	}
+}
+
+add_action( 'entry_footer', 'add_entry_more_link' );
+function add_entry_more_link() {
+	$output = get_entry_more_link() . "\n";
+	echo $output;
+}
+
+add_action( 'entry_footer', 'entry_edit_post_link' );
+function entry_edit_post_link() {
+	edit_post_link( __( 'Edit', 'karakuri' ), '<p class="edit-link">', '</p>' );;
+}
 
 /* Archive
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -267,22 +380,23 @@ function get_archive_title() {
 	return $output;
 }
 
-/* excerpt_more_linl */
-function excerpt_more_linl( $post_id = Null ) {
-	echo get_excerpt_more_linl( $post_id );
+/* entry_more_link */
+function entry_more_link( $post_id = null ) {
+	echo get_entry_more_link( $post_id );
 }
 
-/* get_excerpt_more_linl */
-function get_excerpt_more_linl( $post_id = Null ) {
+/* get_entry_more_link */
+function get_entry_more_link( $post_id = null ) {
 	if ( ! $post_id )
 		$post_id = get_the_ID();
-	return '<p class="excerpt_more"><a href="'. get_permalink( $post_id ) . '">' . __( 'Read more &raquo;', 'themes' ) . '</a></p>';	
+
+	return '<p class="entry-more"><a href="'. get_permalink( $post_id ) . '">' . __( 'Read more &raquo;', 'themes' ) . '</a></p>';
 }
 
 //add_filter( 'excerpt_more', 'new_excerpt_more' );
 function new_excerpt_more( $post ) {
-	return '...';	
-}	
+	return '...';
+}
 
 if ( !function_exists( 'karakuri_content_nav' ) ) :
 
@@ -304,7 +418,6 @@ if ( !function_exists( 'karakuri_content_nav' ) ) :
 				<?php if ( get_adjacent_post() ) { ?>
 					<div class="nav-next"><?php previous_post_link( '%link', __( '&laquo; Older posts', 'karakuri' ) ); ?></div>
 				<?php } ?>
-				<div id="scrolltop"><a href="#page"><?php _e( 'Go TOP', 'karakuri' ); ?></a></div>
 				<?php if ( get_adjacent_post( false, '', false ) ) { ?>
 					<div class="nav-previous"><?php next_post_link( '%link', __( 'Newer posts &raquo;', 'karakuri' ) ); ?></div>
 				<?php } ?>
@@ -352,27 +465,23 @@ function get_karakuri_link_pages() {
 
 /* Footer
   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
 /* copyright */
 function copyright( $year = null ) {
 	echo get_copyright( $year );
 }
 
 /* get_copyright */
-
 function get_copyright( $year = null ) {
 	$output = '<p id="copyright"><small>&copy; ' . get_copyright_year( $year ) . ' ' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</small></p>' . "\n";
 	return $output;
 }
 
 /* copyright_year */
-
 function copyright_year( $year = null ) {
 	echo get_copyright_year( $year );
 }
 
 /* get_copyright_year */
-
 function get_copyright_year( $year = null ) {
 	if ( !$year ) {
 		$year = date_i18n( 'Y' );
@@ -386,17 +495,6 @@ function get_copyright_year( $year = null ) {
 	return $output;
 }
 
-/* add_theme_script_js */
-add_action( 'wp_print_scripts', 'add_theme_script_js' );
-
-function add_theme_script_js() {
-	if ( !is_admin() ) {
-		wp_enqueue_script( 'jquery' );
-		//wp_enqueue_script( 'jquery-common', get_template_directory_uri() . '/js/common.js', array( 'jquery' ), '0.7.1.0', true );
-		wp_enqueue_script( 'jquery-common', get_template_directory_uri() . '/js/common.js', array( 'jquery' ), get_file_time( 'js/common.js' ), true );
-	}
-}
-
 /* Other
   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /**
@@ -406,8 +504,8 @@ function add_theme_script_js() {
  */
 function get_file_time( $file = null, $path = null ) {
 	if ( !$path )
-		$path = get_stylesheet_directory();
-	
+		$path = get_template_directory();
+
 	$value = filemtime( $path . '/' . $file );
 	return $value;
 }

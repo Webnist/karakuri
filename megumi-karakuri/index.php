@@ -18,6 +18,6 @@
 			</div><!-- #entry-content -->
 		</article><!-- #post-0 -->
 	<?php endif; ?>
-	<?php karakuri_content_nav(); ?>
 </div><!-- #content -->
+<?php karakuri_content_nav(); ?>
 <?php get_footer(); ?>
