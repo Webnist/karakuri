@@ -131,7 +131,6 @@ function karakuri_widgets_init() {
 		) );
 
 }
-
 endif;
 
 /* Head
@@ -201,14 +200,17 @@ add_action( 'wp_enqueue_scripts', 'karakuri_scripts_styles' );
 function karakuri_scripts_styles() {
 	global $wp_styles;
 
-	wp_enqueue_script( 'common-script', get_template_directory_uri() . '/js/common.min.js', array( 'jquery' ), get_file_time( 'js/common.min.js' ), true );
-
 	/*
 	 * Adds JavaScript to pages with the comment form to support
 	 * sites with threaded comments (when in use).
 	 */
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
+
+	/*
+	 * Loads our main theme common script.
+	 */
+	wp_enqueue_script( 'common-script', get_template_directory_uri() . '/js/common.min.js', array( 'jquery' ), get_file_time( 'js/common.min.js' ), true );
 
 	/*
 	 * Loads our main stylesheet.
@@ -219,23 +221,23 @@ function karakuri_scripts_styles() {
 
 /* Header
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* main_nav */
+/* karakuri_main_nav */
 function karakuri_main_nav() {
 	echo get_karakuri_main_nav();
 }
 
-/* get_main_nav */
+/* get_karakuri_main_nav */
 function get_karakuri_main_nav() {
 	$output = wp_nav_menu( array( 'container_id' => 'main-nav-box', 'echo' => false, 'theme_location' => 'main_menu' ) );
 	return $output;
 }
 
-/* main_img */
+/* karakuri_main_img */
 function karakuri_main_img() {
 	echo get_karakuri_main_img();
 }
 
-/* get_main_img */
+/* get_karakuri_main_img */
 function get_karakuri_main_img() {
 	$header_image = get_header_image();
 	if ( is_home() || is_front_page() ) {
@@ -409,13 +411,13 @@ function get_archive_title() {
 			$output .= sprintf( __( 'Search Results for: %s %s', 'karakuri' ), get_search_query(), $wp_query->found_posts );
 		elseif ( is_author() ) :
 			$user_id = get_query_var( 'author' );
-		$user_name = get_userdata( $user_id );
-		$user_name = $user_name->display_name;
-		$user_avatar = get_avatar( $user_id, 18 );
-		$output .= '<span class="avatar">' . $user_avatar . '</span>';
-		$output .= sprintf( __( 'Author Archives: %s', 'karakuri' ), $user_name );
+			$user_name = get_userdata( $user_id );
+			$user_name = $user_name->display_name;
+			$user_avatar = get_avatar( $user_id, 18 );
+			$output .= '<span class="avatar">' . $user_avatar . '</span>';
+			$output .= sprintf( __( 'Author Archives: %s', 'karakuri' ), $user_name );
 		else :
-			$output = __( 'Blog Archives', 'karakuri' );
+			$output = __( 'Archives', 'karakuri' );
 		endif;
 		$output .= '</h1>' . "\n";
 		$output .= '</header>' . "\n";
@@ -450,16 +452,24 @@ function get_karakuri_link_pages() {
 }
 
 /* Page
-  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* HOME
-  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-/* Side
-  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Footer
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* karakuri_footer_nav */
+function karakuri_footer_nav() {
+	echo get_karakuri_footer_nav();
+}
+
+/* get_karakuri_footer_nav */
+function get_karakuri_footer_nav() {
+	$output = wp_nav_menu( array( 'container_id' => 'footer-nav-box', 'echo' => false, 'theme_location' => 'footer_menu' ) );
+	return $output;
+}
+
 /* copyright */
 function copyright( $year = null ) {
 	echo get_copyright( $year );
@@ -507,16 +517,23 @@ function get_file_time( $file = null, $path = null ) {
 	return $value;
 }
 
+/**
+ * Widget list filter
+ *
+ * @since Karakuri 1.0
+ */
 add_filter( 'wp_list_categories', 'wp_count_span_list' );
 function wp_count_span_list( $links ) {
 	return preg_replace( '/(<a.+\))/u', '<span>$1</span>', $links );
 }
+
 add_filter( 'widget_archives_args', 'widget_archives_count_span' );
 function widget_archives_count_span( $args ) {
 	$args['before'] = '<span>';
 	$args['after'] = '</span>';
 	return $args;
 }
+
 add_filter( 'wp_list_bookmarks', 'wp_link_rating_span_list' );
 function wp_link_rating_span_list( $output ) {
 	$output = str_replace('<li>', '<li><span>', $output);

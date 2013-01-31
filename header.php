@@ -19,7 +19,7 @@
 					<?php get_search_form(); ?>
 				</div>
 				<nav id="main-nav" class="header-navigation" role="navigation">
-					<h3 class="menu-toggle"><span>Main menu</span></h3>
+					<h3 class="menu-toggle"><span><?php esc_html( _e( 'Main menu', 'karakuri' ) ); ?></span></h3>
 					<a class="assistive-text" href="#content" title="Skip to content"><span>Skip to content</span></a>
 					<?php karakuri_main_nav(); ?>
 				</nav>
