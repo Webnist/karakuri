@@ -7,6 +7,13 @@
 		<?php karakuri_link_pages(); ?>
 	</div><!-- .entry-summary -->
 	<footer class="entry-meta">
-		<?php do_action( 'entry_footer' ); ?>
+		<?php entry_thumbnail(); ?>
+		<?php entry_data(); ?>
+		<?php entry_terms(); ?>
+		<?php entry_terms( 'post_tag' ); ?>
+		<?php entry_author(); ?>
+		<?php entry_comments(); ?>
+		<?php entry_more_link(); ?>
+		<?php entry_edit_post_link(); ?>
 	</footer>
 </article><!-- #post-<?php the_ID(); ?> -->

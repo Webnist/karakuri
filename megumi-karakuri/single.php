@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="primary" role="main">
+	<div id="content" role="main">
 	<?php if ( have_posts() ) : ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'content', 'single' ); ?>
@@ -17,5 +17,5 @@
 			</div><!-- #entry-content -->
 		</article><!-- #post-0 -->
 	<?php endif; ?>
-</div><!-- #content -->
+	</div><!-- #content -->
 <?php get_footer(); ?>

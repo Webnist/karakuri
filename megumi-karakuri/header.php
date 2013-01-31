@@ -8,6 +8,7 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
+		<?php do_action( 'karakuri_body_before' ); ?>
 		<div id="page" class="hfeed site">
 			<header id="masthead" class="site-header" role="banner">
 				<hgroup>
