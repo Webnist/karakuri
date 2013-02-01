@@ -2,10 +2,10 @@
 	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 	</header><!-- .entry-header -->
-	<div class="entry-content">
+	<section class="entry-content">
 		<?php the_content(); ?>
 		<?php karakuri_link_pages(); ?>
-	</div><!-- .entry-summary -->
+	</section><!-- .entry-summary -->
 	<footer class="entry-meta">
 		<?php entry_thumbnail(); ?>
 		<?php entry_data(); ?>

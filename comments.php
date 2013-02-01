@@ -1,4 +1,4 @@
-<div id="comments">
+<div id="comments" class="comments-area">
 	<?php if ( post_password_required() ) : ?>
 		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'karakuri' ); ?></p>
 	</div><!-- #comments -->
@@ -17,7 +17,7 @@ endif;
 	<?php endif; // check for comment navigation  ?>
 	<h2 class="commentlist-title"><?php _e( 'Comment List', 'karakuri' ); ?></h2>
 	<ol class="commentlist">
-		<?php wp_list_comments(); ?>
+		<?php wp_list_comments( array( 'callback' => 'karakuri_comment', 'style' => 'ol' ) ); ?>
 	</ol>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through  ?>
