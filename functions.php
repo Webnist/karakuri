@@ -358,11 +358,7 @@ function get_karakuri_content_nav() {
 	} elseif ( is_single() ) {
 		$next = get_adjacent_post();
 		$previous = get_adjacent_post( false, '', false );
-		if ( $next && $previous ) {
-			$separator .= ' / ';
-		} else {
-			$separator .= '';
-		}
+		$separator = ( $next && $previous ) ? ' / ' : '';
 		$output .= '<nav id="single-nav">' . "\n";
 		if ( $previous )
 			$output .= '<p class="nav-previous"><a href="' . esc_url( get_permalink( $previous->ID ) ) . '">' . esc_html( __( 'Prev', 'karakuri' ) ) . '</a>' . $separator . '</p>' . "\n";
