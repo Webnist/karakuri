@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import url("css/normalize.min.css");
 /*
 Theme Name: KARAKURI
 Theme URI: http://www.megumithemes.com/
@@ -13,6 +12,8 @@ Tags: custom-background, custom-header, custom-menu, one-column, flexible-width
 */
 /* normalize.css http://github.com/necolas/normalize.css
 	 Load the file you minify. */
+@import url("css/normalize.min.css");
+
 /* Bass */
 html {
 	font-size: 62.5%;
