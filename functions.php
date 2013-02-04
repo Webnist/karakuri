@@ -345,11 +345,7 @@ function get_karakuri_content_nav() {
 	global $wp_query;
 	$output = '';
 	if ( $wp_query->max_num_pages > 1 ) {
-		if ( get_next_posts_link() && get_previous_posts_link() ) {
-			$separator .= ' / ';
-		} else {
-			$separator .= '';
-		}
+		$separator = ( get_next_posts_link() && get_previous_posts_link() ) ? ' / ' : '';
 
 		$output .= '<nav id="archive-nav">' . "\n";
 		if ( get_previous_posts_link() )
