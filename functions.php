@@ -240,7 +240,7 @@ function karakuri_main_img() {
 /* get_karakuri_main_img */
 function get_karakuri_main_img() {
 	$header_image = get_header_image();
-	if ( is_home() || is_front_page() ) {
+	if ( $header_image && (is_home() || is_front_page()) ) {
 		$output = '<p id="main-img"><img src="' . esc_url( $header_image ) . '" alt="' . esc_attr( get_bloginfo( 'description', 'display' ) ) . '"></p>';
 		return $output;
 	}
