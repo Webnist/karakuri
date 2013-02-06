@@ -79,11 +79,6 @@ function karakuri_theme_setup() {
 			),
 		) );
 
-	$defaults = array(
-		'default-image' => get_template_directory_uri() . '/images/site-logo.png',
-	);
-	add_theme_support( 'themes-logo', $defaults );
-
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'archive-thumb', 184, 99999 );
 	//set_post_thumbnail_size( 150, 9999 );
