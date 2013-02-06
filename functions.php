@@ -81,13 +81,11 @@ function karakuri_theme_setup() {
 
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'archive-thumb', 184, 99999 );
-	//set_post_thumbnail_size( 150, 9999 );
 
 	add_theme_support( 'infinite-scroll', array(
 			'container'  => 'content',
 			'footer'     => 'page',
 		) );
-	remove_action( 'get_footer', 'footer' );
 
 }
 endif;
