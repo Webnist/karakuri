@@ -17,12 +17,12 @@
 				</hgroup>
 				<div id="header-search-box">
 					<?php get_search_form(); ?>
-				</div>
+				</div><!-- #header-search-box -->
 				<nav id="main-nav" class="header-navigation" role="navigation">
 					<h3 class="menu-toggle"><span><?php esc_html( _e( 'Main menu', 'karakuri' ) ); ?></span></h3>
 					<a class="assistive-text" href="#content" title="Skip to content"><span>Skip to content</span></a>
 					<?php karakuri_main_nav(); ?>
-				</nav>
-			</header>
+				</nav><!-- #main-nav -->
+			</header><!-- #masthead -->
 			<?php karakuri_main_img(); ?>
 			<div id="main" class="wrapper">

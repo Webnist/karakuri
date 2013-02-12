@@ -15,5 +15,5 @@
 		<?php entry_comments(); ?>
 		<?php entry_more_link(); ?>
 		<?php entry_edit_post_link(); ?>
-	</footer>
+	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -11,10 +11,10 @@
 			<header class="entry-header">
 				<h1 class="entry-title"><?php _e( 'Found article you are looking for.', 'karakuri' ); ?></h1>
 			</header><!-- .entry-header -->
-			<div id="entry-content">
+			<div class="entry-content">
 				<p><?php _e( 'The requested content was not found. You may find if you search for relevant posts.', 'karakuri' ); ?></p>
 				<?php get_search_form(); ?>
-			</div><!-- #entry-content -->
+			</div><!-- .entry-content -->
 		</article><!-- #post-0 -->
 	<?php endif; ?>
 	</div><!-- #content -->

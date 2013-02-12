@@ -3,17 +3,17 @@
 	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
 		<div id="footer-widget-first">
 			<?php dynamic_sidebar( 'sidebar-1' ); ?>
-		</div>
+		</div><!-- #footer-widget-first -->
 	<?php endif; ?>
 	<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
 		<div id="footer-widget-second">
 			<?php dynamic_sidebar( 'sidebar-2' ); ?>
-		</div>
+		</div><!-- #footer-widget-second -->
 	<?php endif; ?>
 	<?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
 		<div id="footer-widget-third">
 			<?php dynamic_sidebar( 'sidebar-3' ); ?>
-		</div>
+		</div><!-- #footer-widget-third -->
 	<?php endif; ?>
-	</div>
+	</div><!-- #footer-widget -->
 <?php endif; ?>

@@ -5,7 +5,7 @@
 	<section class="entry-content">
 		<?php the_content(); ?>
 		<?php karakuri_link_pages(); ?>
-	</section><!-- .entry-summary -->
+	</section><!-- .entry-content -->
 	<footer class="entry-meta">
 		<?php entry_thumbnail(); ?>
 		<?php entry_data(); ?>
@@ -15,5 +15,5 @@
 		<?php entry_comments(); ?>
 		<?php entry_more_link(); ?>
 		<?php entry_edit_post_link(); ?>
-	</footer>
+	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->
