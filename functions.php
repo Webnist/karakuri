@@ -278,13 +278,16 @@ function entry_terms( $term_name = 'category' ) {
 }
 function get_entry_terms( $term_name = 'category' ) {
 	$id = get_the_ID();
-	$terms = get_the_terms( $id, $term_name );
-	if ( $term_name == 'post_tag' )
+	if ( $term_name == 'post_tag' ) {
+		$terms = get_the_tags( $id );
 		$term_name = 'tags';
+	} else {
+		$terms = get_the_terms( $id, $term_name );
+	}
 
 	$separator  = ', ';
 	$output     = '';
-	$html        = '';
+	$html       = '';
 	if ( $terms ) {
 		$output .= '<p class="posted-in-' . $term_name . '">' . "\n";
 		foreach ( $terms as $term ) {

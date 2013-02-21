@@ -4,7 +4,7 @@ Theme Name: KARAKURI
 Theme URI: http://www.megumithemes.com/
 Description: Was referred to as KARAKURI things gimmick in Japan a long time ago. This theme is a responsive, you can complete in one theme, even mobile and PC. I like the cutlet than the croquettes.
 Author: the Megumi team
-Author URI: http://www.megumithemes.com/
+Author URI: http://en.digitalcube.jp/
 Version: 0.7.2
 License: GNU General Public License
 License URI: license.txt
@@ -29,16 +29,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-	position: relative;
-	margin: 0;
-	background: #000;
 	color: #3D3C3A;
-	word-wrap: break-word;
+	line-height: 1.5;
+	margin: 0;
+	position: relative;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	hyphens: auto;
-	line-height: 1.5;
+	word-wrap: break-word;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	background: #000;
 }
 
 /* text color
@@ -59,8 +59,8 @@ a:hover, a:focus {
 }
 
 ::selection, ::-moz-selection {
-	background: #30A0C8;
 	color: #FFF;
+	background: #30A0C8;
 }
 
 /* Layout
@@ -70,14 +70,14 @@ a:hover, a:focus {
 }
 
 #page {
+	font-size: 18px;
+	font-size: 1.8rem;
 	margin-top: 50px;
 	padding: 0 10px;
 	background: #FFF;
 	-webkit-box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 	-moz-box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 	box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
-	font-size: 18px;
-	font-size: 1.8rem;
 }
 
 #main {
@@ -85,19 +85,19 @@ a:hover, a:focus {
 }
 
 #side-box {
+	width: 240px;
+	font-size: 18px;
+	font-size: 1.8rem;
+	color: #FFF;
+	text-shadow: 0px 1px 0px black;
+	filter: dropshadow(color=black, offx=0, offy=1);
+	background: #5C5C5C;
+	display: none;
 	position: absolute;
 	top: 0;
 	left: -240px;
 	z-index: 9999;
-	display: none;
 	overflow: auto;
-	width: 240px;
-	background: #5C5C5C;
-	color: #FFF;
-	text-shadow: 0px 1px 0px black;
-	font-size: 18px;
-	font-size: 1.8rem;
-	filter: dropshadow(color=black, offx=0, offy=1);
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -109,22 +109,22 @@ a:hover, a:focus {
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #masthead {
 	margin-bottom: 20px;
-	padding: 20px 0;
 	border-bottom: 4px solid black;
+	padding: 20px 0;
 }
 
 #site-title {
-	margin: 0;
-	font-weight: normal;
 	font-size: 30px;
 	font-size: 3.0rem;
+	font-weight: normal;
+	margin: 0;
 }
 
 #site-description {
-	margin: 0;
 	color: #464646;
 	font-size: 14px;
 	font-size: 1.4rem;
+	margin: 0;
 }
 
 #header-search-box {
@@ -132,33 +132,33 @@ a:hover, a:focus {
 }
 
 #s {
-	margin-top: 19px;
-	padding: 4px 10px 4px 28px;
 	width: 72px;
 	height: 22px;
-	border: 1px solid #dddddd;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-	background: #fafafa url(images/icon/icon-search.png) no-repeat 5px 6px;
+	font-size: 14px;
+	font-size: 1.4rem;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-	font-size: 14px;
-	font-size: 1.4rem;
+	margin-top: 19px;
+	border: 1px solid #dddddd;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
 	-ms-border-radius: 2px;
+	border-radius: 2px;
+	padding: 4px 10px 4px 28px;
+	background: #fafafa url(images/icon/icon-search.png) no-repeat 5px 6px;
 }
 
 #header-search-box #s {
-	-webkit-transition-timing-function: ease;
-	-moz-transition-timing-function: ease;
-	transition-timing-function: ease;
 	-webkit-transition-duration: 400ms;
 	-moz-transition-duration: 400ms;
 	transition-duration: 400ms;
 	-webkit-transition-property: width, background;
 	-moz-transition-property: width, background;
 	transition-property: width, background;
+	-webkit-transition-timing-function: ease;
+	-moz-transition-timing-function: ease;
+	transition-timing-function: ease;
 }
 #header-search-box #s:focus {
 	width: 196px;
@@ -173,9 +173,6 @@ a:hover, a:focus {
 }
 
 #main-nav {
-	position: fixed;
-	top: 0;
-	z-index: 999;
 	width: 100%;
 	height: 50px;
 	background: #464646;
@@ -183,6 +180,9 @@ a:hover, a:focus {
 	background-image: -webkit-radial-gradient(bottom, #373737 0%, #464646 5px);
 	background-image: -moz-radial-gradient(bottom, #373737 0%, #464646 5px);
 	background-image: radial-gradient(bottom, #373737 0%, #464646 5px);
+	position: fixed;
+	top: 0;
+	z-index: 999;
 }
 
 .admin-bar #main-nav {
@@ -190,36 +190,36 @@ a:hover, a:focus {
 }
 
 #main-nav .menu-toggle {
+	width: 50px;
+	height: 32px;
+	margin: 0;
+	cursor: pointer;
+	overflow: hidden;
 	position: absolute;
 	top: 10px;
 	left: 10px;
 	z-index: 20;
-	overflow: hidden;
-	margin: 0;
-	width: 50px;
-	height: 32px;
-	cursor: pointer;
 }
 #main-nav .menu-toggle span {
-	display: block;
-	padding-top: 32px;
 	width: 50px;
+	padding-top: 32px;
 	background: url(images/button/menu-button.png) no-repeat;
+	display: block;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 #main-nav .assistive-text {
+	width: 100%;
+	height: 56px;
+	overflow: hidden;
+	display: block;
 	position: absolute;
 	top: 0;
 	z-index: 10;
-	display: block;
-	overflow: hidden;
-	width: 100%;
-	height: 56px;
 }
 #main-nav .assistive-text span {
-	display: block;
-	padding-top: 56px;
 	width: 100%;
+	padding-top: 56px;
+	display: block;
 }
 #main-nav div {
 	display: none;
@@ -229,45 +229,45 @@ a:hover, a:focus {
 	margin: 20px auto 20px;
 }
 #main-img img {
-	display: block;
 	max-width: 100%;
 	height: auto;
+	display: block;
 }
 
 /* Common Area
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .page-title {
-	margin-bottom: 20px;
-	color: #9E9E9E;
 	font-size: 18px;
 	font-size: 1.8rem;
+	color: #9E9E9E;
+	margin-bottom: 20px;
 }
 .page-title span.avatar {
 	margin-right: 18px;
 }
 .page-title span.avatar img {
-	border: 1px solid #999999;
 	vertical-align: middle;
+	border: 1px solid #999999;
 }
 
 #content article {
-	clear: both;
 	margin-bottom: 20px;
-	padding-bottom: 20px;
 	border-bottom: 1px solid #f2f2f2;
+	padding-bottom: 20px;
+	clear: both;
 }
 
 .entry-title {
-	margin: 0;
 	font-size: 22px;
 	font-size: 2.2rem;
+	margin: 0;
 }
 
 .edit-link a {
-	display: inline-block;
+	color: #FFF;
 	padding: 5px 10px;
 	background: #000;
-	color: #FFF;
+	display: inline-block;
 }
 .edit-link a:hover {
 	background: #21759B;
@@ -280,27 +280,27 @@ a:hover, a:focus {
 }
 
 .entry-meta .thumb {
-	display: none;
 	background: #FFF;
+	display: none;
 }
 
 .sticky .entry-meta .thumb {
 	position: relative;
 }
 .sticky .featured-post {
+	width: 51px;
+	height: 51px;
+	margin: 0;
+	overflow: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
-	overflow: hidden;
-	margin: 0;
-	width: 51px;
-	height: 51px;
 }
 .sticky .featured-post span {
-	display: block;
-	padding-top: 51px;
 	width: 51px;
+	padding-top: 51px;
 	background: url(images/icon/icon-pickup.png) no-repeat;
+	display: block;
 }
 
 .entry-meta .entry-date {
@@ -328,10 +328,10 @@ a:hover, a:focus {
 	font-style: italic;
 }
 .entry-more a {
-	display: inline-block;
+	color: #FFF;
 	padding: 5px 10px;
 	background: #000;
-	color: #FFF;
+	display: inline-block;
 }
 .entry-more a:hover {
 	background: #21759B;
@@ -352,30 +352,30 @@ a:hover, a:focus {
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* ==|== page-links ======================================================= */
 .page-links {
-	clear: both;
 	text-align: center;
+	clear: both;
 }
 .page-links span {
-	display: inline-block;
-	padding: 0 7px;
-	border: 1px solid black;
-	background: #000;
 	color: #FFF;
+	border: 1px solid black;
+	padding: 0 7px;
+	background: #000;
+	display: inline-block;
 }
 .page-links a span {
-	background: #D9D9D9;
 	color: #000;
+	background: #D9D9D9;
 }
 .page-links a span:hover {
-	background: #000;
 	color: #FFF;
+	background: #000;
 }
 
 /* ==|== entry content layout ======================================================= */
 .alignnone, .alignleft, .alignright, .aligncenter {
-	display: block;
-	margin-right: auto;
 	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 
 img.alignnone, img.alignleft, img.alignright, img.aligncenter {
@@ -442,27 +442,27 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 }
 .entry-content table th,
 .comment-content table th {
-	padding: 5px 20px;
 	width: auto;
-	border-bottom: 1px solid #cccccc;
-	background: #FCFCFC;
-	text-align: left;
 	font-weight: normal;
+	text-align: left;
+	border-bottom: 1px solid #cccccc;
+	padding: 5px 20px;
+	background: #FCFCFC;
 }
 .entry-content table td,
 .comment-content table td {
-	padding: 5px 20px;
 	width: auto;
 	border-bottom: 1px solid #cccccc;
+	padding: 5px 20px;
 }
 .entry-content blockquote,
 .entry-content blockquote,
 .comment-content blockquote,
 .comment-content blockquote {
+	font-style: italic;
 	margin: 0;
 	padding: 24px;
 	border-left: 6px solid #bababa;
-	font-style: italic;
 }
 .entry-content blockquote p,
 .entry-content blockquote p,
@@ -482,12 +482,12 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 }
 .entry-content pre,
 .comment-content pre {
-	overflow: auto;
-	padding: 24px;
-	border: 1px solid #ededed;
-	color: #666;
 	font-size: 12px;
 	font-size: 1.2rem;
+	color: #666;
+	border: 1px solid #ededed;
+	overflow: auto;
+	padding: 24px;
 }
 .entry-content pre code,
 .comment-content pre code {
@@ -523,10 +523,10 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 	/* Comment form */
 }
 .comments-area .commentlist-title {
-	padding: 10px 0;
-	border-bottom: 1px solid #f2f2f2;
 	font-size: 28px;
 	font-size: 2.8rem;
+	border-bottom: 1px solid #f2f2f2;
+	padding: 10px 0;
 }
 .comments-area .commentlist {
 	padding: 0;
@@ -538,10 +538,10 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 	font-size: 1.8rem;
 }
 .comments-area .commentlist article header .avatar {
-	float: left;
 	margin-right: 30px;
-	padding: 2px;
 	border: 1px solid #cccccc;
+	padding: 2px;
+	float: left;
 }
 .comments-area .commentlist article header cite {
 	display: block;
@@ -550,20 +550,20 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 	clear: both;
 }
 .comments-area .commentlist article section .edit-link {
-	text-align: right;
 	font-size: 12px;
 	font-size: 1.2rem;
+	text-align: right;
 }
 .comments-area .commentlist article .reply {
-	text-align: right;
 	font-size: 12px;
 	font-size: 1.2rem;
+	text-align: right;
 }
 .comments-area .commentlist article .reply a {
-	display: inline-block;
+	color: #FFF;
 	padding: 5px 10px;
 	background: #000;
-	color: #FFF;
+	display: inline-block;
 }
 .comments-area .commentlist article .reply a:hover {
 	background: #21759B;
@@ -574,19 +574,19 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 }
 .comments-area .commentlist .pingback {
 	margin-bottom: 20px;
-	padding: 0 15px;
 	border: 3px double #f2f2f2;
+	padding: 0 15px;
 }
 .comments-area .commentlist .pingback .edit-link {
-	text-align: right;
 	font-size: 12px;
 	font-size: 1.2rem;
+	text-align: right;
 }
 .comments-area .commentlist .pingback .edit-link a {
-	display: inline-block;
+	color: #FFF;
 	padding: 5px 10px;
 	background: #000;
-	color: #FFF;
+	display: inline-block;
 }
 .comments-area .commentlist .pingback .edit-link a:hover {
 	background: #21759B;
@@ -608,18 +608,18 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 }
 .comments-area #comment-nav-above:after,
 .comments-area #comment-nav-below:after {
+	content: "";
 	display: table;
 	clear: both;
-	content: "";
 }
 .comments-area #respond {
 	margin-top: 48px;
 }
 .comments-area #respond h3#reply-title {
-	padding: 10px 0;
-	border-bottom: 1px solid #f2f2f2;
 	font-size: 28px;
 	font-size: 2.8rem;
+	border-bottom: 1px solid #f2f2f2;
+	padding: 10px 0;
 }
 .comments-area #respond h3#reply-title #cancel-comment-reply-link {
 	margin-left: 10px;
@@ -647,19 +647,19 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 .comments-area #respond form input[type="text"], .comments-area #respond form textarea {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 10px;
-	padding: 0.714285714rem;
-	width: 100%;
 	font-size: 12px;
 	font-size: 0.857142857rem;
 	line-height: 1.714285714;
+	padding: 10px;
+	padding: 0.714285714rem;
+	width: 100%;
 }
 .comments-area #respond form p.form-allowed-tags {
 	margin: 0;
-	color: #5e5e5e;
 	font-size: 12px;
 	font-size: 0.857142857rem;
 	line-height: 2;
+	color: #5e5e5e;
 }
 
 .required {
@@ -668,35 +668,35 @@ img.size-full, img.size-large, img.header-image, img.wp-post-image {
 
 /* ==|== Caption ======================================================= */
 .wp-caption {
-	padding: 7px;
 	max-width: 100%;
 	border: 1px solid #e5e5e5;
+	padding: 7px;
 	background: #FCFCFC;
 }
 .wp-caption img {
-	display: block;
 	margin: 0 auto;
+	display: block;
 }
 .wp-caption .wp-caption-text {
-	margin: 10px 0;
 	text-align: center;
+	margin: 10px 0;
 }
 
 .gallery-caption, .entry-caption {
-	color: #757575;
 	font-style: italic;
 	font-size: 12px;
 	font-size: 0.857142857rem;
 	line-height: 2;
+	color: #757575;
 }
 
 img.wp-smiley, .rsswidget img {
-	margin-top: 0;
-	margin-bottom: 0;
-	padding: 0;
 	border: 0;
 	border-radius: 0;
 	box-shadow: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
 }
 
 .entry-content dl.gallery-item {
@@ -721,9 +721,9 @@ img.wp-smiley, .rsswidget img {
 }
 
 .gallery .gallery-icon img {
-	padding: 5%;
-	max-width: 90%;
 	height: auto;
+	max-width: 90%;
+	padding: 5%;
 }
 
 .gallery-columns-1 .gallery-icon img {
@@ -754,66 +754,66 @@ img.wp-smiley, .rsswidget img {
 	padding-left: 20px;
 }
 .widget-content select {
-	display: block;
-	margin: 5px auto;
 	width: 90%;
+	margin: 5px auto;
+	display: block;
 }
 
 /* widget select */
 /* ==|== archives widget ==================================================== */
 /* ==|== calendar widget ==================================================== */
 #wp-calendar {
-	position: relative;
 	width: 100%;
 	font-size: 11px;
 	font-size: 1.1rem;
 	line-height: 3;
+	position: relative;
 }
 #wp-calendar thead tr th, #wp-calendar tbody tr td {
+	text-align: center;
 	border: 1px solid #cccccc;
 	background: #F2F2F2;
-	text-align: center;
 }
 #wp-calendar thead tr th {
 	border-bottom: none;
 	background: #E6E6E6;
 }
 #wp-calendar tbody a {
-	display: block;
-	background: #21759B;
 	color: #FFF;
+	background: #21759B;
+	display: block;
 }
 #wp-calendar tfoot {
+	width: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
 }
 #wp-calendar tfoot #prev, #wp-calendar tfoot #next {
 	width: 50%;
 }
 #wp-calendar tfoot #prev a {
-	display: block;
-	overflow: hidden;
 	width: 18px;
 	height: 18px;
-	background: url(images/icon/icon-prev-arrow.png) no-repeat;
 	text-indent: -999999px;
+	background: url(images/icon/icon-prev-arrow.png) no-repeat;
+	display: block;
+	overflow: hidden;
 }
 #wp-calendar tfoot #next a {
-	display: block;
-	overflow: hidden;
 	width: 18px;
 	height: 18px;
-	background: url(images/icon/icon-prev-arrow.png) no-repeat;
 	text-indent: -999999px;
+	background: url(images/icon/icon-prev-arrow.png) no-repeat;
+	display: block;
+	overflow: hidden;
 	background: url(images/icon/icon-next-arrow.png) no-repeat;
 	float: right;
 }
 
 #side-box #wp-calendar {
-	margin: 0 auto;
 	width: 90%;
+	margin: 0 auto;
 }
 #side-box #wp-calendar thead tr th, #side-box #wp-calendar tbody tr td {
 	background: #5C5C5C;
@@ -843,9 +843,9 @@ img.wp-smiley, .rsswidget img {
 	margin-top: 0;
 }
 .widget_rss ul li .rss-date {
-	display: block;
 	padding-left: 28px;
 	background: url(images/icon/icon-date.png) no-repeat left 2px;
+	display: block;
 }
 
 /* ==|== search widget ====================================================== */
@@ -855,8 +855,8 @@ img.wp-smiley, .rsswidget img {
 /* Footer Area
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #in-footer {
-	padding-bottom: 20px;
 	border-top: 1px solid #cccccc;
+	padding-bottom: 20px;
 }
 
 #footer-nav ul {
@@ -874,29 +874,29 @@ img.wp-smiley, .rsswidget img {
 /* Side Box Area
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #side-box h3 {
+	font-size: 13px;
+	font-size: 1.3rem;
+	color: #FFF;
+	text-shadow: 0px 1px 0px black;
+	filter: dropshadow(color=black, offx=0, offy=1);
 	margin: 0;
-	padding: 6px 12px;
-	border-top: 1px solid #787878;
 	border-bottom: 1px solid #484848;
+	border-top: 1px solid #787878;
+	padding: 6px 12px;
 	background-image: -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 100, color-stop(0%, #484848), color-stop(100%, #3c3c3c));
 	background-image: -webkit-radial-gradient(top, #484848 0%, #3c3c3c 100%);
 	background-image: -moz-radial-gradient(top, #484848 0%, #3c3c3c 100%);
 	background-image: radial-gradient(top, #484848 0%, #3c3c3c 100%);
-	color: #FFF;
-	text-shadow: 0px 1px 0px black;
-	font-size: 13px;
-	font-size: 1.3rem;
-	filter: dropshadow(color=black, offx=0, offy=1);
 }
 #side-box #header-search-box {
-	padding: 10px 0;
 	border-bottom: 1px solid #484848;
+	padding: 10px 0;
 	background: #FFF;
 }
 #side-box #s {
 	width: 182px;
-	display: block;
 	margin: 0 auto;
+	display: block;
 }
 #side-box #header-search-box #s:focus {
 	width: 182px;
@@ -910,22 +910,22 @@ img.wp-smiley, .rsswidget img {
 	list-style: none;
 }
 #side-box .menu ul li a {
-	display: block;
-	padding-left: 20px;
-	border-top: 1px solid #787878;
 	border-bottom: 1px solid #484848;
+	border-top: 1px solid #787878;
+	padding-left: 20px;
+	display: block;
 }
 #side-box .widget-content ul li a, #side-box .widget-content ul li span {
-	display: block;
-	padding-left: 20px;
-	border-top: 1px solid #787878;
 	border-bottom: 1px solid #484848;
+	border-top: 1px solid #787878;
+	padding-left: 20px;
+	display: block;
 }
 #side-box .widget_recent_comments ul li {
-	display: block;
-	padding-left: 20px;
-	border-top: 1px solid #787878;
 	border-bottom: 1px solid #484848;
+	border-top: 1px solid #787878;
+	padding-left: 20px;
+	display: block;
 }
 #side-box .menu ul ul li a {
 	padding-left: 40px;
@@ -940,19 +940,19 @@ img.wp-smiley, .rsswidget img {
 	padding-left: 60px;
 }
 #side-box .widget-content ul li span a {
-	display: inline;
-	padding: 0;
 	border: none;
+	padding: 0;
+	display: inline;
 }
 #side-box .widget_recent_comments ul li a {
-	display: inline;
-	padding: 0;
 	border: none;
+	padding: 0;
+	display: inline;
 }
 #side-box .widget_rss ul li a, #side-box .widget_rss ul li span {
-	display: inline;
-	padding: 0;
 	border: none;
+	padding: 0;
+	display: inline;
 }
 #side-box .widget-content ul ul li span a, #side-box .widget-content ul ul ul li span a {
 	padding: 0;
@@ -964,22 +964,22 @@ img.wp-smiley, .rsswidget img {
 	display: none;
 }
 #side-box .widget_rss ul li .rsswidget {
-	display: block;
+	color: #FFF;
+	text-shadow: 0px 1px 0px black;
+	filter: dropshadow(color=black, offx=0, offy=1);
 	margin: 0;
-	padding: 6px 12px;
-	border-top: 1px solid #787878;
 	border-bottom: 1px solid #484848;
+	border-top: 1px solid #787878;
+	padding: 6px 12px;
 	background-image: -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 100, color-stop(0%, #484848), color-stop(100%, #3c3c3c));
 	background-image: -webkit-radial-gradient(top, #484848 0%, #3c3c3c 100%);
 	background-image: -moz-radial-gradient(top, #484848 0%, #3c3c3c 100%);
 	background-image: radial-gradient(top, #484848 0%, #3c3c3c 100%);
-	color: #FFF;
-	text-shadow: 0px 1px 0px black;
-	filter: dropshadow(color=black, offx=0, offy=1);
+	display: block;
 }
 #side-box .widget_rss ul li .rss-date {
-	margin: 0 10px;
 	padding-left: 28px;
+	margin: 0 10px;
 }
 #side-box .widget_rss ul li .rssSummary, #side-box .widget_rss ul li cite {
 	margin: 0 10px;
@@ -1002,15 +1002,15 @@ img.wp-smiley, .rsswidget img {
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #main .post:after,
 #main .entry-content:after {
+	content: "";
 	display: table;
 	clear: both;
-	content: "";
 }
 
 #footer-widget:after {
+	content: "";
 	display: table;
 	clear: both;
-	content: "";
 }
 
 /* PC
@@ -1019,22 +1019,22 @@ img.wp-smiley, .rsswidget img {
 	/* Layout
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 	#page {
-		position: relative;
+		width: 824px;
 		margin: 0 auto;
 		padding: 0 70px;
-		width: 824px;
+		position: relative;
 	}
 
 	/* Header Area
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 	#masthead {
-		padding-bottom: 0;
 		border-bottom: none;
+		padding-bottom: 0;
 	}
 	#masthead hgroup {
-		float: left;
-		margin-bottom: 20px;
 		width: 80%;
+		margin-bottom: 20px;
+		float: left;
 	}
 
 	#header-search-box {
@@ -1045,14 +1045,14 @@ img.wp-smiley, .rsswidget img {
 	}
 
 	#main-nav {
+		height: auto;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #d9d9d9;
+		border-top: 4px solid black;
+		padding: 0;
+		background: none;
 		position: static;
 		clear: both;
-		margin-bottom: 20px;
-		padding: 0;
-		height: auto;
-		border-top: 4px solid black;
-		border-bottom: 1px solid #d9d9d9;
-		background: none;
 	}
 	#main-nav .menu-toggle {
 		display: none;
@@ -1065,14 +1065,14 @@ img.wp-smiley, .rsswidget img {
 		padding: 0;
 	}
 	#main-nav ul li {
-		position: relative;
-		display: inline-block;
 		width: auto;
+		display: inline-block;
+		position: relative;
 	}
 	#main-nav ul li a {
-		display: block;
-		padding: 5px 10px;
 		text-decoration: none;
+		padding: 5px 10px;
+		display: block;
 	}
 	#main-nav ul li a:hover {
 		color: #21759B;
@@ -1081,12 +1081,12 @@ img.wp-smiley, .rsswidget img {
 		color: #21759B;
 	}
 	#main-nav ul li .children, #main-nav ul li .sub-menu {
+		width: 180px;
 		position: absolute;
 		top: 100%;
 		left: 0;
 		z-index: 9999;
 		display: none;
-		width: 180px;
 	}
 	#main-nav ul li .children .children, #main-nav ul li .sub-menu .sub-menu {
 		top: 0;
@@ -1096,31 +1096,31 @@ img.wp-smiley, .rsswidget img {
 		display: block;
 	}
 	#main-nav ul li .children li a, #main-nav ul li .sub-menu li a {
-		background: #F2F2F2;
 		color: #000;
+		background: #F2F2F2;
 	}
 	#main-nav ul li .children li a:hover, #main-nav ul li .sub-menu li a:hover {
 		background: #E4E4E4;
 	}
 	#main-nav ul:after {
+		content: "";
 		display: table;
 		clear: both;
-		content: "";
 	}
 	#main-nav .assistive-text {
 		display: none;
 	}
 	#main-nav:after {
+		content: "";
 		display: table;
 		clear: both;
-		content: "";
 	}
 
 	/* Common Area
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 	.entry-header {
-		float: right;
 		width: 599px;
+		float: right;
 	}
 
 	.entry-title {
@@ -1129,22 +1129,22 @@ img.wp-smiley, .rsswidget img {
 	}
 
 	.entry-content {
-		float: right;
 		width: 599px;
+		float: right;
 	}
 
 	.entry-summary {
-		float: right;
 		width: 599px;
+		float: right;
 	}
 	.entry-summary .entry-more {
-		display: block;
 		text-align: right;
+		display: block;
 	}
 
 	.page .entry-header, .page .entry-content {
-		float: none;
 		width: 100%;
+		float: none;
 	}
 
 	/* Archive Area
@@ -1156,10 +1156,10 @@ img.wp-smiley, .rsswidget img {
 		margin-top: 0;
 	}
 	.entry-meta .thumb {
-		display: block;
-		padding: 7px;
 		width: 184px;
 		border: 1px solid #cccccc;
+		padding: 7px;
+		display: block;
 	}
 	.entry-meta .thumb img {
 		display: block;
@@ -1176,13 +1176,13 @@ img.wp-smiley, .rsswidget img {
 	}
 
 	.alignleft {
-		float: left;
 		margin: 12px 24px 12px 0;
+		float: left;
 	}
 
 	.alignright {
-		float: right;
 		margin: 12px 0 12px 24px;
+		float: right;
 	}
 
 	img.alignleft {
@@ -1204,13 +1204,13 @@ img.wp-smiley, .rsswidget img {
 	/* Widget Common
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 	#footer-widget {
-		display: block;
 		padding-top: 10px;
+		display: block;
 	}
 	#footer-widget #footer-widget-first, #footer-widget #footer-widget-second, #footer-widget #footer-widget-third {
-		float: left;
-		padding: 0 10px;
 		width: 251px;
+		padding: 0 10px;
+		float: left;
 	}
 	#footer-widget #footer-widget-second {
 		margin-left: 10px;
@@ -1225,8 +1225,8 @@ img.wp-smiley, .rsswidget img {
 		display: none;
 	}
 	#footer-nav ul li {
-		display: inline;
 		margin-left: 20px;
+		display: inline;
 	}
 	#footer-nav ul li:first-child {
 		margin-left: 0;
@@ -1240,8 +1240,8 @@ img.wp-smiley, .rsswidget img {
 }
 @media screen and (min-width: 1280px) {
 	#page {
-		overflow: visible;
 		width: 980px;
+		overflow: visible;
 	}
 
 	/* Common Area
