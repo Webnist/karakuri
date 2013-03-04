@@ -352,8 +352,8 @@ function get_karakuri_content_nav() {
 
 		$output .= '</nav>' . "\n";
 	} elseif ( is_single() ) {
-		$next = get_adjacent_post();
-		$previous = get_adjacent_post( false, '', false );
+		$next = get_adjacent_post( false, '', false );
+		$previous = get_adjacent_post();
 		$separator = ( $next && $previous ) ? ' / ' : '';
 		$output .= '<nav id="single-nav">' . "\n";
 		if ( $previous )
