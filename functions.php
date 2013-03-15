@@ -255,7 +255,8 @@ function get_entry_thumbnail() {
 	if ( has_post_thumbnail( $id ) ) {
 		$output .= get_the_post_thumbnail( $id, $size ) . "\n";
 	} else {
-		$output .= '<img src="' . get_template_directory_uri() . '/images/other/no-image.png" alt="' . the_title_attribute( 'echo=0' ) . '" width="' . $width . '" height="' . $height . '">' . "\n";
+		$src = apply_filters('karakuri_no-image', get_template_directory_uri() . '/images/other/no-image.png', $width, $height);
+		$output .= '<img src="' . $src . '" alt="' . the_title_attribute( 'echo=0' ) . '" width="' . $width . '" height="' . $height . '">' . "\n";
 	}
 	$output .= '</a>' . "\n";
 	if ( is_sticky() && is_home() && ! is_paged() ) {
