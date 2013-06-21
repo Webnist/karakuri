@@ -310,23 +310,68 @@ a:hover, a:focus {
 
 .entry-meta .entry-date {
 	padding-left: 38px;
-	background: url(images/icon/icon-date.png) no-repeat left 3px;
+}
+.entry-meta .entry-date:before {
+	width: 20px;
+	height: 20px;
+	vertical-align: text-top;
+	margin: 0 15px 0 -38px;
+	background: url(images/icon/icon-sprite.png) no-repeat 0 0;
+	content: '';
+	overflow: hidden;
+	display: inline-block;
 }
 .entry-meta .posted-in-category {
 	padding-left: 38px;
-	background: url(images/icon/icon-category.png) no-repeat left 3px;
+}
+.entry-meta .posted-in-category:before {
+	width: 20px;
+	height: 20px;
+	vertical-align: text-top;
+	margin: 0 15px 0 -38px;
+	background: url(images/icon/icon-sprite.png) no-repeat -30px 0;
+	content: '';
+	overflow: hidden;
+	display: inline-block;
 }
 .entry-meta .posted-in-tags {
 	padding-left: 38px;
-	background: url(images/icon/icon-tag.png) no-repeat left 3px;
+}
+.entry-meta .posted-in-tags:before {
+	width: 20px;
+	height: 20px;
+	vertical-align: text-top;
+	margin: 0 15px 0 -38px;
+	background: url(images/icon/icon-sprite.png) no-repeat -59px 0;
+	content: '';
+	overflow: hidden;
+	display: inline-block;
 }
 .entry-meta .entry-author {
 	padding-left: 38px;
-	background: url(images/icon/icon-author.png) no-repeat left 3px;
+}
+.entry-meta .entry-author:before {
+	width: 20px;
+	height: 20px;
+	vertical-align: text-top;
+	margin: 0 15px 0 -38px;
+	background: url(images/icon/icon-sprite.png) no-repeat -89px 0;
+	content: '';
+	overflow: hidden;
+	display: inline-block;
 }
 .entry-meta .comments-link {
 	padding-left: 38px;
-	background: url(images/icon/icon-comment.png) no-repeat left 3px;
+}
+.entry-meta .comments-link:before {
+	width: 20px;
+	height: 20px;
+	vertical-align: text-top;
+	margin: 0 15px 0 -38px;
+	background: url(images/icon/icon-sprite.png) no-repeat -119px 0;
+	content: '';
+	overflow: hidden;
+	display: inline-block;
 }
 
 .entry-more {
@@ -801,7 +846,7 @@ img.wp-smiley, .rsswidget img {
 	width: 18px;
 	height: 18px;
 	text-indent: -999999px;
-	background: url(images/icon/icon-prev-arrow.png) no-repeat;
+	background: url(images/icon/icon-sprite.png) no-repeat -149px 0;
 	display: block;
 	overflow: hidden;
 }
@@ -809,10 +854,9 @@ img.wp-smiley, .rsswidget img {
 	width: 18px;
 	height: 18px;
 	text-indent: -999999px;
-	background: url(images/icon/icon-prev-arrow.png) no-repeat;
+	background: url(images/icon/icon-sprite.png) no-repeat -177px 0;
 	display: block;
 	overflow: hidden;
-	background: url(images/icon/icon-next-arrow.png) no-repeat;
 	float: right;
 }
 
