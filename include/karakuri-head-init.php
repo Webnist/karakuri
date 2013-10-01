@@ -4,60 +4,28 @@
  * Description: load the wp_head function settings
  * Author: Webnist
  * Version: 0.7.1.0
+ *
  * @package WordPress
  * @subpackage Karakuri
-**/
+ * */
 
-/* Head
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/**
- * karakuri_wp_title
- *
- * @Filter to wp_title
- * @Referring to Twenty Twelve 1.0
- */
-add_filter( 'wp_title', 'karakuri_wp_title', 10, 2 );
-function karakuri_wp_title( $title, $sep ) {
-	global $paged, $page;
-
-	if ( is_feed() )
-		return $title;
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title = $site_description . $sep . $title;
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
-		$title = sprintf( __( 'Page %s', 'karakuri' ), max( $paged, $page ) ) . $sep . $title;
-
-	return $title;
-}
-
-/**
- * karakuri_head_mobile_meta
- *
- * @Action to wp_head
- */
-add_action( 'wp_head', 'karakuri_head_mobile_meta' );
-function karakuri_head_mobile_meta() {
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+// karakuri_head_viewport_meta
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+// Add the viewport meta tag
+add_action( 'wp_head', 'karakuri_head_viewport_meta' );
+function karakuri_head_viewport_meta() {
 	echo <<< EOT
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
 EOT;
 }
 
-/**
- * karakuri_head_script
- *
- * @Action to wp_head
- */
-add_action( 'wp_head', 'karakuri_head_script' );
-function karakuri_head_script() {
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+// karakuri_head_conditional_comment
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+// Conditional comment
+add_action( 'wp_head', 'karakuri_head_conditional_comment' );
+function karakuri_head_conditional_comment() {
 	$template_directory_uri = get_template_directory_uri();
 	echo <<< EOT
 <!--[if lt IE 9]>
@@ -66,11 +34,10 @@ function karakuri_head_script() {
 EOT;
 }
 
-/**
- * Enqueues scripts and styles for front-end.
- *
- * @Referring to Twenty Twelve 1.0
- */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+// karakuri_scripts_styles
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+// Set the loading of scripts and styles
 add_action( 'wp_enqueue_scripts', 'karakuri_scripts_styles' );
 function karakuri_scripts_styles() {
 	global $wp_styles;
@@ -83,9 +50,9 @@ function karakuri_scripts_styles() {
 		wp_enqueue_script( 'comment-reply' );
 
 	/*
-	 * Loads our main theme common script.
+	 * Loads our main theme script.
 	 */
-	wp_enqueue_script( 'common-script', get_template_directory_uri() . '/js/common.min.js', array( 'jquery' ), karakuri_file_time_stamp( 'js/common.min.js' ), true );
+	wp_enqueue_script( 'karakuri-script', get_template_directory_uri() . '/js/karakuri-script.js', array( 'jquery' ), karakuri_file_time_stamp( 'js/karakuri-script.js' ), true );
 
 	/*
 	 * Loads our main stylesheet.

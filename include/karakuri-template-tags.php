@@ -18,15 +18,14 @@
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 # 1. Header tags
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-## karakuri_main_nav
-function karakuri_main_nav() {
-	echo get_karakuri_main_nav();
+## karakuri_global_nav
+function karakuri_global_nav() {
+	echo get_karakuri_global_nav();
 }
 
-## get_karakuri_main_nav
-function get_karakuri_main_nav() {
-	$output = wp_nav_menu( array( 'container_id' => 'main-nav-box', 'echo' => false, 'theme_location' => 'main_menu' ) );
+## get_karakuri_global_nav
+function get_karakuri_global_nav() {
+	$output = wp_nav_menu( array( 'container_id' => 'global-nav-box', 'echo' => false, 'theme_location' => 'global-menu' ) );
 	return $output;
 }
 
