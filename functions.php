@@ -35,7 +35,7 @@ function karakuri_theme_setup() {
 		'default-image' => get_template_directory_uri() . '/images/headers/nape-beauty.jpg',
 		'width'         => apply_filters( 'karakuri_header_image_width', 980 ),
 		'height'        => apply_filters( 'karakuri_header_image_height', 300 ),
-		'header-text'   => true,
+		'header-text'   => false,
 	);
 	add_theme_support( 'custom-header', $defaults );
 
@@ -203,12 +203,12 @@ function karakuri_scripts_styles() {
 	/*
 	 * Loads our main theme common script.
 	 */
-	wp_enqueue_script( 'common-script', get_template_directory_uri() . '/js/common.min.js', array( 'jquery' ), get_file_time( 'js/common.min.js' ), true );
+	wp_enqueue_script( 'common-script', get_template_directory_uri() . '/js/common.min.js', array( 'jquery' ), get_karakuri_file_time( 'js/common.min.js' ), true );
 
 	/*
 	 * Loads our main stylesheet.
 	 */
-	wp_enqueue_style( 'karakuri-style', get_template_directory_uri() . '/style.css' , array(), get_file_time( 'style.css' ) );
+	wp_enqueue_style( 'karakuri-style', get_template_directory_uri() . '/style.css' , array(), get_karakuri_file_time( 'style.css' ) );
 
 }
 
@@ -241,11 +241,11 @@ function get_karakuri_main_img() {
 
 /* Common
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-function entry_thumbnail() {
-	echo get_entry_thumbnail();
+function karakuri_entry_thumbnail() {
+	echo get_karakuri_entry_thumbnail();
 }
 
-function get_entry_thumbnail() {
+function get_karakuri_entry_thumbnail() {
 	$id     = get_the_ID();
 	$size   = 'archive-thumb';
 	$width  = 184;
@@ -266,18 +266,18 @@ function get_entry_thumbnail() {
 	return apply_filters( 'entry_thumbnail', $output, $size, $width, $height );
 }
 
-function entry_data() {
-	echo get_entry_data();
+function karakuri_entry_data() {
+	echo get_karakuri_entry_data();
 }
-function get_entry_data() {
+function get_karakuri_entry_data() {
 	$output = '<p class="entry-date"><time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">' . esc_html( get_the_date() ) . '</time></p>';
-	return apply_filters( 'entry_date', $output );
+	return apply_filters( 'karakuri_entry_date', $output );
 }
 
-function entry_terms( $term_name = 'category' ) {
-	echo get_entry_terms( $term_name );
+function karakuri_entry_terms( $term_name = 'category' ) {
+	echo get_karakuri_entry_terms( $term_name );
 }
-function get_entry_terms( $term_name = 'category' ) {
+function get_karakuri_entry_terms( $term_name = 'category' ) {
 	$id = get_the_ID();
 	if ( $term_name == 'post_tag' ) {
 		$terms = get_the_tags( $id );
@@ -301,18 +301,18 @@ function get_entry_terms( $term_name = 'category' ) {
 
 }
 
-function entry_author() {
-	echo get_entry_author();
+function karakuri_entry_author() {
+	echo get_karakuri_entry_author();
 }
-function get_entry_author() {
+function get_karakuri_entry_author() {
 	$output = '<p class="entry-author">' . "\n";
 	$output .= '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . "\n";
 	$output .= get_the_author() . "\n";
 	$output .= '</a></p>' . "\n";
-	return apply_filters( 'entry_author', $output );
+	return apply_filters( 'karakuri_entry_author', $output );
 }
 
-function entry_comments() {
+function karakuri_entry_comments() {
 	if ( comments_open() ) {
 		echo '<p class="comments-link">' . "\n";
 		echo comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'karakuri' ) . '</span>', __( '1 Reply', 'karakuri' ), __( '% Replies', 'karakuri' ) ) . "\n";
@@ -320,18 +320,18 @@ function entry_comments() {
 	}
 }
 
-function entry_more_link( $post_id = null ) {
-	echo get_entry_more_link( $post_id );
+function karakuri_entry_more_link( $post_id = null ) {
+	echo get_karakuri_entry_more_link( $post_id );
 }
 
-function get_entry_more_link( $post_id = null ) {
+function get_karakuri_entry_more_link( $post_id = null ) {
 	if ( ! $post_id )
 		$post_id = get_the_ID();
 
 	return '<p class="entry-more"><a href="'. get_permalink( $post_id ) . '">' . __( 'Read more &raquo;', 'themes' ) . '</a></p>';
 }
 
-function entry_edit_post_link() {
+function karakuri_entry_edit_post_link() {
 	edit_post_link( __( 'Edit', 'karakuri' ), '<p class="edit-link">', '</p>' );
 }
 
@@ -370,13 +370,13 @@ function get_karakuri_content_nav() {
 
 /* Archive
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* archive_title */
-function archive_title() {
-	echo get_archive_title();
+/* karakuri_archive_title */
+function karakuri_archive_title() {
+	echo get_karakuri_archive_title();
 }
 
-/* get_archive_title */
-function get_archive_title() {
+/* get_karakuri_archive_title */
+function get_karakuri_archive_title() {
 	global $wp_query;
 	$output = '';
 	if ( !is_home() || !is_front_page() ) {
@@ -518,25 +518,25 @@ function get_karakuri_footer_nav() {
 	return $output;
 }
 
-/* copyright */
-function copyright( $year = null ) {
-	echo get_copyright( $year );
+/* karakuri_copyright */
+function karakuri_copyright( $year = null ) {
+	echo get_karakuri_copyright( $year );
 }
 
-/* get_copyright */
-function get_copyright( $year = null ) {
-	$output = '<p id="copyright"><small>&copy; ' . get_copyright_year( $year ) . ' ' . esc_html( get_bloginfo( 'name', 'display' ) ) . '</small></p>' . "\n";
+/* get_karakuri_copyright */
+function get_karakuri_copyright( $year = null ) {
+	$output = '<p id="copyright"><small>&copy; ' . get_karakuri_copyright_year( $year ) . ' ' . esc_html( get_bloginfo( 'name', 'display' ) ) . '</small></p>' . "\n";
 	return $output;
 }
 
-/* copyright_year */
-function copyright_year( $year = null ) {
-	echo get_copyright_year( $year );
+/* karakuri_copyright_year */
+function karakuri_copyright_year( $year = null ) {
+	echo get_karakuri_copyright_year( $year );
 }
 
-/* get_copyright_year */
-function get_copyright_year( $year = null ) {
-	$year = (int) apply_filters( 'copyright_year', $year );
+/* get_karakuri_copyright_year */
+function get_karakuri_copyright_year( $year = null ) {
+	$year = (int) apply_filters( 'karakuri_copyright_year', $year );
 	if ( !$year )
 		$year = (int) date_i18n( 'Y' );
 
@@ -552,12 +552,12 @@ function get_copyright_year( $year = null ) {
 /* Other
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /**
- * get_file_time
+ * get_karakuri_file_time
  * Browser cache file protection.
  *
  * @since Karakuri 1.0
  */
-function get_file_time( $file = null, $path = null, $child = false ) {
+function get_karakuri_file_time( $file = null, $path = null, $child = false ) {
 	if ( !$path && $child )
 		$path = get_stylesheet_directory();
 
@@ -573,20 +573,20 @@ function get_file_time( $file = null, $path = null, $child = false ) {
  *
  * @since Karakuri 1.0
  */
-add_filter( 'wp_list_categories', 'wp_count_span_list' );
-function wp_count_span_list( $links ) {
+add_filter( 'wp_list_categories', 'karakuri_count_span_list' );
+function karakuri_count_span_list( $links ) {
 	return preg_replace( '/(<a.+\))/u', '<span>$1</span>', $links );
 }
 
-add_filter( 'widget_archives_args', 'widget_archives_count_span' );
-function widget_archives_count_span( $args ) {
+add_filter( 'widget_archives_args', 'karakuri_widget_archives_count_span' );
+function karakuri_widget_archives_count_span( $args ) {
 	$args['before'] = '<span>';
 	$args['after'] = '</span>';
 	return $args;
 }
 
-add_filter( 'wp_list_bookmarks', 'wp_link_rating_span_list' );
-function wp_link_rating_span_list( $output ) {
+add_filter( 'wp_list_bookmarks', 'karakuri_link_rating_span_list' );
+function karakuri_link_rating_span_list( $output ) {
 	$output = str_replace('<li>', '<li><span>', $output);
 	$output = str_replace('</li>', '</span></li>', $output);
 	return $output;
